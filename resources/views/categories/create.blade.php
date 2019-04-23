@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" name="name">
+                    <input type="text" id="name" class="form-control" name="name" autofocus>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success">Add Category</button>
