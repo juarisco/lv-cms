@@ -17,11 +17,13 @@
                     </ul>
                 </div>
             @endif
-            @csrf
-            <form action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" method="post">
-                @if (isset($post))
+            {{-- <form action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" method="post" enctype="multipart/form-data"> --}}
+                
+            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                {{-- @if (isset($post))
                     @method('PUT')
-                @endif
+                @endif --}}
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" id="title" class="form-control" name="title" value="{{ isset($post) ? $post->title : '' }}" autofocus>
