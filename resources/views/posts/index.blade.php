@@ -26,8 +26,12 @@
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
                             </td>
                             <td>
-                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-danger btn-sm">Trash</a>
-                                {{-- <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $post->id }})">Delete</button> --}}
+                                <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Trash</button>
+                                </form>
+                                {{-- <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-danger btn-sm">Trash</a> --}}
                             </td>
                         </tr>
                     @endforeach
