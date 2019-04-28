@@ -11,7 +11,7 @@
                 <table class="table">
                     <thead>
                         <th>Name</th>
-                        <th>Name</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)

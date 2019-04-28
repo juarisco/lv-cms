@@ -12,8 +12,8 @@
                     <thead>
                         <th>Image</th>
                         <th>Title</th>
-                        <th>Title</th>
-                        <th>Title</th>
+                        <th></th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
