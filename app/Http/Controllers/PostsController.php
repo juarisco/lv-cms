@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Http\Requests\Posts\CreatePostsRequest;
 
 class PostsController extends Controller
@@ -75,7 +76,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.create')->with('post', $post);
     }
 
     /**
@@ -85,9 +86,28 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->only(['title', 'description', 'published_at', 'content']);
+
+        // check if new image
+        if ($request->hasFile('image')) {
+            // upload it
+            $image = $request->image->store('posts');
+            // delete old one
+            Storage::delete($post->image);
+
+            $data['image'] = $image;
+        }
+
+        // update attributes
+        $post->update($data);
+
+        // flash message
+        session()->flash('success', 'Post updated successfully,');
+
+        // redirect user
+        return redirect(route('posts.index'));
     }
 
     /**
