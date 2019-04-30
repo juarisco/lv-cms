@@ -53,7 +53,7 @@ class PostsController extends Controller
             'content' => $request->content,
             'image' => $image,
             'published_at' => $request->published_at,
-            'category_id' => $request->category
+            'category_id' => $request->category_id
         ]);
 
         // flash message
@@ -94,7 +94,7 @@ class PostsController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'published_at', 'content', 'category']);
+        $data = $request->only(['title', 'description', 'published_at', 'content', 'category_id']);
         // dd($data);
 
         // check if new image
