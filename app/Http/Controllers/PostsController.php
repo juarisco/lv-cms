@@ -11,6 +11,10 @@ use App\Http\Requests\Posts\CreatePostsRequest;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('VerifyCategoriesCount')->only(['create', 'store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -90,7 +94,8 @@ class PostsController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'published_at', 'content']);
+        $data = $request->only(['title', 'description', 'published_at', 'content', 'category']);
+        // dd($data);
 
         // check if new image
         if ($request->hasFile('image')) {
