@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->timestamp('published_at')->nullable();
 
+            $table->unsignedInteger('category_id');
+
             $table->timestamps();
         });
     }
