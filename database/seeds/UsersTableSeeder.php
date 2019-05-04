@@ -13,12 +13,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('email', 'john@doe.com')->first();
+        $user = User::where('email', 'josef@mail.com')->first();
 
         if (!$user) {
             User::create([
-                'name' => 'John Doe',
-                'email' => 'john@doe.com',
+                'name' => 'Josef Waelchi',
+                'email' => 'josef@mail.com',
                 'role' => 'admin',
                 'password' => Hash::make('password'),
             ]);

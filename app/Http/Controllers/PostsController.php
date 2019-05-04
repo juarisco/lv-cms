@@ -16,6 +16,7 @@ class PostsController extends Controller
     {
         $this->middleware('VerifyCategoriesCount')->only(['create', 'store']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +57,8 @@ class PostsController extends Controller
             'content' => $request->content,
             'image' => $image,
             'published_at' => $request->published_at,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id
         ]);
 
         if ($request->tags) {
